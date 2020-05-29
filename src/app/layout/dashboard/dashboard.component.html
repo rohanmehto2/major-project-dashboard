@@ -1,0 +1,15 @@
+<div [@routerTransition]>
+     <h2 class="text-muted">Dashboard <small>Statistics Overview</small></h2>
+        <br> <br> <br>
+    <div class="row">
+        <div class="col-xl-4 col-lg-6">
+            <app-stat [bgClass]="'primary'" [count]="26" [icon]="'fa-bolt'" [label]="'Power'"></app-stat>
+        </div>
+        <div class="col-xl-4 col-lg-6">
+            <app-stat [bgClass]="'warning'" [count]="12" [icon]="'fa-plug'" [label]="'Consumption'"></app-stat>
+        </div>
+        <div class="col-xl-4 col-lg-6">
+            <app-stat [bgClass]="'danger'" [count]="13" [icon]="'fa-thermometer-2'" [label]="'Temperature'"></app-stat>
+        </div>
+    </div> 
+</div>
