@@ -8,8 +8,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
-    imports: [CommonModule, LayoutRoutingModule, TranslateModule, NgbDropdownModule],
+    imports: [CommonModule, LayoutRoutingModule, TranslateModule, NgbDropdownModule, HttpClientModule],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })
 export class LayoutModule {}
