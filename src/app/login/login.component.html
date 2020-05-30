@@ -3,29 +3,33 @@
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
             <h1>Home Automation System</h1>
-            <form role="form">
-                <div class="form-content">
+            <div *ngIf="error" class="center" style="color: red;">{{error}}</div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" role="form">
+                <div class="form-content form-group">
                     <div class="form-group">
                         <input
-                            [placeholder]="'Email' | translate"
+                        id="username" type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                            [placeholder]="'Username' | translate"
                             class="form-control input-underline input-lg"
-                            type="text"
                         />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Username is required</div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <input
+                        id="password" type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                             [placeholder]="'Password' | translate"
                             class="form-control input-underline input-lg"
-                            type="password"
                         />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
                     </div>
                 </div>
-                <a (click)="onLoggedin()" [routerLink]="['/dashboard']" class="btn rounded-btn">{{
-                    'Log in' | translate
-                }}</a>
+                <button type="submit" class="btn rounded-btn" [disabled]="loading">Login</button>
                 &nbsp;
-                <a [routerLink]="['/signup']" class="btn rounded-btn">{{ 'Register' | translate }}</a>
             </form>
         </div>
     </div>
