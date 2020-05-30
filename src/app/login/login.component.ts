@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
             this.error = 'Invalid credentials';
             return;
         }
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard', { term: 'term' }]);
 
     }
 

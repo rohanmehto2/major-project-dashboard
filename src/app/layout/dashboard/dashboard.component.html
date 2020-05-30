@@ -27,7 +27,7 @@
              <th>No of Smart Switch</th>
          </thead>
          <tbody>
-           <tr *ngFor="let lcu of gcuData.gcu.lcu; let i=index;" (click)="RowSelected(r);" routerLink="/blank-page">
+           <tr *ngFor="let lcu of gcuData.gcu.lcu; let i=index;" (click)="openLCU(lcu.id);">
              <td>{{i}}</td>
              <td>{{lcu.name}}</td>
              <td>{{lcu.switchCount}}</td>

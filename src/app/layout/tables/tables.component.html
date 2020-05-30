@@ -1,95 +1,43 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Users'" [icon]="'fa-table'"></app-page-header>
+    <h2 style="text-align: center;" class="text-muted"> LCU Usage </h2>
+    <h2 style="text-align: center;"  style="float:left!important;" class="text-muted"><small>{{ lcuData.lcu.name }}</small></h2>
+    <br> <br> <br>
     <div class="row">
-        <div class="col col-xl-6 col-lg-12">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Tenants
-                </div>
-                <div class="card-body table table-hover">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>LCU Id</th>
-                                <th>Room No</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Akshat</td>
-                                <td>A1</td>
-                                <td>100</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Karan</td>
-                                <td>A2</td>
-                                <td>101</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Mohit</td>
-                                <td>B1</td>
-                                <td>201</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Rohan</td>
-                                <td>B2</td>
-                                <td>202</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Samarthya</td>
-                                <td>C1</td>
-                                <td>301</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <br> <br>
-            <div class="card mb-3">
-                <div class="card-header">Local Control Unit</div>
-                <div class="card-body table table-hover">
-                    <table class="table">
-                            <tr>
-                                <th>#</th>
-                                <th>LCU Id</th>
-                                <th>Smart Switch No.</th>
-                                <th>Power Rating (in Watts)</th>
-                            </tr>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>A1</td>
-                                <td>S1</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>A1</td>
-                                <td>S2</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>A2</td>
-                                <td>S1</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>A2</td>
-                                <td>S2</td>
-                                <td>100</td>
-                            </tr>
-                        </tbody>
-                    </table> 
-            </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'primary'" [count]="lcuData.data.totalPower" [icon]="'fa-bolt'" [label]="'Power Consumption'"></app-stat>
         </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'warning'" [count]="lcuData.data.activeSwitchCount" [icon]="'fa-plug'" [label]="'Active Devices'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'secondary'" [count]="lcuData.data.sum" [icon]="'fa-clock-o'" [label]="'Active Time'">
+            </app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'danger'" [count]="lcuData.data.highestTemperature" [icon]="'fa-thermometer-2'" [label]="'Temperature'"></app-stat>
+        </div>
+    </div>
+    <br> <br>
+
+    <h1> Smart Switches</h1>
+    <div class="dash-table-container">
+        <table class="table table-hover" width="50%">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Smart Switch</th>
+                    <th>Power Rating</th>
+                    <th>Status</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let switch of lcuData.lcu.switches let i=index;" (click)="RowSelected(s);">
+                    <td>{{i}}</td>
+                    <td>{{switch.name}}</td>
+                    <td>{{switch.powerRating}}</td>
+                    <td>{{switch.state ? 'ON' : 'OFF'}}</td>
+                </tr>
+            </tbody>
+
+        </table>
     </div>
 </div>

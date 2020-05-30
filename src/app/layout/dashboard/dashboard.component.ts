@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { RestService } from './../../services/rest.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
@@ -12,11 +13,14 @@ export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
     public gcuData = {};
+    // public passed;
     // public stats = this.gcuData.data;
     // public switchData = `${this.stats.activeSwitchCount}/${this.stats.switchCount}`;
 
-    constructor(private restService: RestService) {
+    constructor(private restService: RestService, private route: ActivatedRoute,
+        private router: Router) {
         // console.log(this.gcu);
+        // this.route.params.subscribe((params) => this.passed = params['term']);
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
@@ -58,6 +62,10 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.restService.get('/gcu')
         .subscribe((data: any) => this.gcuData = data);
+    }
+
+    public openLCU(id) {
+        this.router.navigate(['/lcu', { id: id }]);
     }
 
     public closeAlert(alert: any) {
