@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageHeaderModule } from '../../shared';
 
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
+
 import { BsComponentRoutingModule } from './bs-component-routing.module';
 import { BsComponentComponent } from './bs-component.component';
 import {
@@ -23,7 +25,7 @@ import {
 } from './components';
 
 @NgModule({
-    imports: [CommonModule, BsComponentRoutingModule, FormsModule, ReactiveFormsModule, NgbModule, PageHeaderModule],
+    imports: [CommonModule, BsComponentRoutingModule, FormsModule, ReactiveFormsModule, NgbModule, PageHeaderModule, Ng2Charts,],
     declarations: [
         BsComponentComponent,
         ButtonsComponent,
@@ -38,7 +40,7 @@ import {
         TabsComponent,
         RatingComponent,
         TooltipComponent,
-        TimepickerComponent
+        TimepickerComponent,
     ]
 })
 export class BsComponentModule {}

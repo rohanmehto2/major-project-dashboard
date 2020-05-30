@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { RestService } from './../../services/rest.service';
 
 @Component({
     selector: 'app-charts',
@@ -36,8 +37,8 @@ export class ChartsComponent implements OnInit {
     public radarChartType: string;
 
     // Pie
-    public pieChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-    public pieChartData: number[] = [300, 500, 100];
+    public pieChartLabels: string[] = [];
+    public pieChartData: number[] = [];
     public pieChartType: string;
 
     // PolarArea
@@ -95,7 +96,7 @@ export class ChartsComponent implements OnInit {
     public lineChartLegend: boolean;
     public lineChartType: string;
 
-    constructor() {}
+    constructor(private restService: RestService) {}
 
     // events
     public chartClicked(e: any): void {
@@ -130,5 +131,12 @@ export class ChartsComponent implements OnInit {
         this.polarAreaChartType = 'polarArea';
         this.lineChartLegend = true;
         this.lineChartType = 'line';
+
+        const url = `/lcu`;
+        this.restService.get(url)
+        .subscribe((data: any) => {
+            this.pieChartLabels = data.data.names;
+            this.pieChartData = data.data.powers;
+        });
     }
 }

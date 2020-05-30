@@ -1,16 +1,87 @@
+<style>
+    .dot{
+        height: 60px;
+        width: 60px;
+        background-color:#fe1a00;
+        border-radius: 50%;
+        display: inline-block;
+        border: 4px solid #d02718   ;
+    }
+    .dot02 {
+        height: 60px;
+        width: 60px;
+        background-color:#77D42a;
+        border-radius: 50%;
+        display: inline-block;
+        border:3px solid #268a16
+    }
+</style>
 <div>
-    <app-page-header [heading]="'Bootstrap Component'" [icon]="'fa-th-list'"></app-page-header>
-    <app-modal></app-modal>
-    <app-alert></app-alert>
-    <app-buttons></app-buttons>
-    <app-collapse></app-collapse>
-    <app-date-picker></app-date-picker>
-    <app-dropdown></app-dropdown>
-    <app-pagination></app-pagination>
-    <app-pop-over></app-pop-over>
-    <app-progressbar></app-progressbar>
-    <app-tabs></app-tabs>
-    <app-tooltip></app-tooltip>
-    <app-timepicker></app-timepicker>
-    <app-rating></app-rating>
+    <h2 style="text-align: center;" class="text-muted"> {{ switchData.name }} </h2>
+    <!-- <h2 style="text-align: center;"  style="float:left!important;" class="text-muted"><small</small></h2> -->
+
+    <br>
+
+    <div class="row">
+        
+        <div class="col col-sm-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Temperature Data
+                </div>
+                <div class="card-body">
+                    <canvas
+                        (chartClick)="chartClicked($event)"
+                        (chartHover)="chartHovered($event)"
+                        [chartType]="lineChartType"
+                        [colors]="lineChartColors"
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [legend]="lineChartLegend"
+                        [options]="lineChartOptions"
+                        baseChart
+                        height="130"
+                    >
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Switch Avtivity  
+                </div>
+                <div class="card-body">
+                    <canvas
+                        (chartClick)="chartClicked($event)"
+                        (chartHover)="chartHovered($event)"
+                        [chartType]="lineChartType"
+                        [colors]="lineChartColors"
+                        [datasets]="lineChartData2"
+                        [labels]="lineChartLabels2"
+                        [legend]="lineChartLegend"
+                        [options]="lineChartOptions"
+                        baseChart
+                        height="130"
+                    >
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <div>
+    <div class="row" style="margin-left: 350px;">
+        <h4 style="text-align: center;" class="text-muted">Device Status</h4>
+     </div>
+    <div class="row" style="margin-left: 395px;">
+        <div *ngIf="!switchData.state" class="dot" >  
+        </div>
+        <div *ngIf="switchData.state" class="dot02" >  
+        </div>
+    </div>
+    </div>
+
+
 </div>

@@ -30,7 +30,7 @@
                     <th>Status</th>
             </thead>
             <tbody>
-                <tr *ngFor="let switch of lcuData.lcu.switches let i=index;" (click)="RowSelected(s);">
+                <tr *ngFor="let switch of lcuData.lcu.switches let i=index;" (click)="openSwitch(switch.id);">
                     <td>{{i}}</td>
                     <td>{{switch.name}}</td>
                     <td>{{switch.powerRating}}</td>

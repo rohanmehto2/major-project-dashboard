@@ -22,4 +22,8 @@ export class TablesComponent implements OnInit {
         this.restService.get(url)
         .subscribe((data: any) => this.lcuData = data);
     }
+
+    public openSwitch(id) {
+        this.router.navigate(['/switch', { id: id }]);
+    }
 }

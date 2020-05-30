@@ -16,12 +16,12 @@ const routes: Routes = [
             { path: 'lcu', loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule) },
             { path: 'forms', loadChildren: () => import('./form/form.module').then((m) => m.FormModule) },
             {
-                path: 'bs-element',
+                path: 'whatever',
                 loadChildren: () => import('./bs-element/bs-element.module').then((m) => m.BsElementModule)
             },
             { path: 'grid', loadChildren: () => import('./grid/grid.module').then((m) => m.GridModule) },
             {
-                path: 'components',
+                path: 'switch',
                 loadChildren: () => import('./bs-component/bs-component.module').then((m) => m.BsComponentModule)
             },
             {
