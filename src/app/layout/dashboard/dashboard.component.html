@@ -2,9 +2,9 @@
     <h2 style="text-align: center;"   class="text-muted">Dashboard</h2>
     <h2 style="text-align: center;"  style="float:left!important;" class="text-muted"><small>{{ gcuData.gcu.name }}</small></h2>
        <br> <br> 
-   <div class="row">
+   <div *ngIf="gcuData.data.admin" class="row">
        <div class="col-xl-3 col-lg-6">
-           <app-stat [bgClass]="'primary'" [count]="gcuData.data.totalPower" [icon]="'fa-bolt'" [label]="'Power Consumption (Watts)'"></app-stat>
+           <app-stat [bgClass]="'primary'" [count]="gcuData.data.totalPower" [icon]="'fa-bolt'" [label]="'Power Usage (W)'"></app-stat>
        </div>
        <div class="col-xl-3 col-lg-6">
            <app-stat [bgClass]="'warning'" [count]="gcuData.data.activeSwitchCount" [icon]="'fa-plug'" [label]="'Active Devices'"></app-stat>
@@ -28,7 +28,7 @@
          </thead>
          <tbody>
            <tr *ngFor="let lcu of gcuData.gcu.lcu; let i=index;" (click)="openLCU(lcu.id);">
-             <td>{{i}}</td>
+             <td>{{i + 1}}</td>
              <td>{{lcu.name}}</td>
              <td>{{lcu.switchCount}}</td>
            </tr> 
