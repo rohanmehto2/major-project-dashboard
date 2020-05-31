@@ -4,17 +4,17 @@
     <br> <br> <br>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [count]="lcuData.data.totalPower" [icon]="'fa-bolt'" [label]="'Power Consumption'"></app-stat>
+            <app-stat [bgClass]="'primary'" [count]="lcuData.data.totalPower" [icon]="'fa-bolt'" [label]="'Power Consumption (Watts)'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
             <app-stat [bgClass]="'warning'" [count]="lcuData.data.activeSwitchCount" [icon]="'fa-plug'" [label]="'Active Devices'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'secondary'" [count]="lcuData.data.sum" [icon]="'fa-clock-o'" [label]="'Active Time'">
+            <app-stat [bgClass]="'secondary'" [count]="lcuData.data.sum" [icon]="'fa-clock-o'" [label]="'Active Time (Minutes)'">
             </app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [count]="lcuData.data.highestTemperature" [icon]="'fa-thermometer-2'" [label]="'Temperature'"></app-stat>
+            <app-stat [bgClass]="'danger'" [count]="lcuData.data.highestTemperature" [icon]="'fa-thermometer-2'" [label]="'Temperature (C)'"></app-stat>
         </div>
     </div>
     <br> <br>
