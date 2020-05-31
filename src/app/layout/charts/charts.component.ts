@@ -9,6 +9,7 @@ import { RestService } from './../../services/rest.service';
     animations: [routerTransition()]
 })
 export class ChartsComponent implements OnInit {
+    public auth;
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
@@ -127,6 +128,15 @@ export class ChartsComponent implements OnInit {
         this.polarAreaChartType = 'polarArea';
         this.lineChartLegend = true;
         this.lineChartType = 'line';
+
+        this.restService.get('/user')
+        .subscribe((data: any) => {
+            if (data.user.authGCU.length > 0) {
+                this.auth = true;
+            } else {
+                this.auth = false;
+            }
+        });
 
         let url = `/lcu`;
         this.restService.get(url)

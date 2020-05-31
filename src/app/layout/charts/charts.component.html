@@ -1,6 +1,3 @@
-<div *ngIf="tempAuth">
-    <div class="alert alert-warning"><h1>You're not authorised to see this page.</h1></div>
-</div>
 <div [@routerTransition]>
    <!--  <div *ngIf="!tempAuth">
     <app-page-header [heading]="'Usage Analytics'" [icon]="'fa-bar-chart-o'"></app-page-header>
@@ -48,7 +45,11 @@
             </div>
         </div>
     </div> -->
-    <div class="row">
+    <div *ngIf="!auth">
+        <div class="alert alert-warning"><h1>You're not authorised to see this page.</h1></div>
+    </div>
+
+    <div *ngIf="auth" class="row">
         
         <div class="col col-sm-6">
             <div class="card mb-3">
@@ -74,7 +75,7 @@
         <div class="col col-sm-6">
             <div class="card mb-3">
                 <div class="card-header">
-                    Temprature
+                    Temperature
                 </div>
                 <div class="card-body">
                     <canvas
